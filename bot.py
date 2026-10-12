@@ -23,7 +23,7 @@ load_dotenv()
 # ─────────────────────────────────────────────
 BOT_TOKEN    = os.getenv("BOT_TOKEN", "8714196040:AAF5W_X0CzbmLirEBs9ej8JTWk7FxT_ragI")
 ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", "8208198748"))
-ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "@YourAdminUsername")  # update with your @username
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "@Dessiemeredajaedr")
 WAIT_HOURS   = 12
 
 GROUPS = ["አራዳ", "ሀገር ግዛት", "ሆጤ", "ሳላይሽ", "ሜጠሮ"]
