@@ -217,14 +217,14 @@ async def got_screenshot(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     # ── Notify admin ─────────────────────────────────────────────
     username_display = f"@{user.username}" if user.username else f"(ID: {user.id})"
     admin_caption = (
-        "🔔 *NEW PAYMENT SUBMISSION*\n"
+        "🔔 NEW PAYMENT SUBMISSION\n"
         "══════════════════════════\n"
-        f"👤 *Name:* {d.get('name', 'N/A')}\n"
-        f"💳 *Paying for:* {d.get('payee', 'N/A')}\n"
-        f"🏘️ *Group:* {d.get('group', 'N/A')}\n"
-        f"📅 *Period:* {d.get('month_from', 'N/A')} → {d.get('month_to', 'N/A')}\n"
-        f"🆔 *Telegram ID:* `{user.id}`\n"
-        f"📱 *Username:* {username_display}\n"
+        f"👤 Name: {d.get('name', 'N/A')}\n"
+        f"💳 Paying for: {d.get('payee', 'N/A')}\n"
+        f"🏘 Group: {d.get('group', 'N/A')}\n"
+        f"📅 Period: {d.get('month_from', 'N/A')} to {d.get('month_to', 'N/A')}\n"
+        f"🆔 Telegram ID: {user.id}\n"
+        f"📱 Username: {username_display}\n"
         "══════════════════════════\n"
         "👇 Please review the screenshot and approve or reject:"
     )
@@ -239,7 +239,6 @@ async def got_screenshot(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
             chat_id=ADMIN_CHAT_ID,
             photo=photo.file_id,
             caption=admin_caption,
-            parse_mode="Markdown",
             reply_markup=admin_keyboard,
         )
         logger.info(f"Admin notified about payment from user {user.id}")
