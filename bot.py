@@ -338,6 +338,16 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         await update.message.reply_text(text, parse_mode="Markdown")
 
 
+async def myid(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Tell the user their Telegram numeric ID."""
+    user = update.effective_user
+    await update.message.reply_text(
+        f"🆔 Your Telegram ID is: {user.id}\n"
+        f"👤 Username: @{user.username or 'N/A'}\n\n"
+        f"ℹ️ Current Admin ID set in bot: {ADMIN_CHAT_ID}"
+    )
+
+
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Cancel the current conversation."""
     context.user_data.clear()
@@ -384,7 +394,8 @@ def main():
     app.add_handler(conv_handler)
     app.add_handler(CallbackQueryHandler(help_command,    pattern="^help$"))
     app.add_handler(CallbackQueryHandler(admin_decision,  pattern=r"^(approve_|reject_)\d+$"))
-    app.add_handler(CommandHandler("help", help_command))
+    app.add_handler(CommandHandler("help",  help_command))
+    app.add_handler(CommandHandler("myid",  myid))
     app.add_handler(MessageHandler(filters.ALL, unknown_message))
 
     logger.info("🤖 Bot is running...")
